@@ -228,6 +228,9 @@ void flip(char color, const char input[3]){
     lineFLip(color, 0, -1, row, col);
 }
 
+
+// Function to check the stuff and the other stuff
+
 bool lineFLip(char color, int dRow, int dCol, int row, int col){
     if((row + dRow < 0) || (row + dRow > SIZE-1))
         return false;
