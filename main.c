@@ -23,7 +23,6 @@ bool validMove(char color, int dRow, int dCol, int row, int col);
 bool lineCheck(char color, int dRow, int dCol, int row, int col);
 bool checkInput(const char input[3]);
 void updateScore(void);
-bool lineFLip(char color, int dRow, int dCol, int row, int col);
 void flip(char color, const char input[3]);
 
 int main(void){
@@ -211,4 +210,50 @@ bool lineCheck(char color, int dRow, int dCol, int row, int col){
         return false;
 
     return lineCheck(color, dRow, dCol, row+dRow, col+dCol);
+}
+
+void flip(char color, const char input[3]){
+    char opp;
+
+    int dRow, dCol, x, y;
+
+    if(color == 'B')
+        opp = 'W';
+    else if(color == 'W')
+        opp = 'B';
+
+    int col = atoi(&input[1])-1;
+    int row = input[0] - 'a';
+
+    for(dCol = -1; dCol<=1; dCol++){
+        for(dRow = -1; dRow<=1; dRow++){
+
+            if((row+dRow < 0) || (row+dRow > SIZE-1) ||
+            (col+dCol < 0) || (col+dCol > SIZE-1))
+                continue;
+
+            if(board[row+dRow][col+dCol] == opp){
+                x = row+dRow;
+                y = col+dCol;
+
+                while(true){
+                    x += dRow;
+                    y += dCol;
+
+                    if(x < 0 || x > SIZE-1 ||
+                        y < 0 || y > SIZE-1)
+                        break;
+                    if(board[x][y] == ' ')
+                        break;
+
+                    if(board[x][y] == color){
+                        while(board[x-=dRow][y-=dCol] == opp)
+                            board[x][y] = color;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
 }
