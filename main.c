@@ -7,16 +7,17 @@
 
 int main(void){
 
-    printf("Enter name of player one (Black):");
+    initialiseGame();
+    printf("Enter name of Player 1 (Black):");
     scanf("%s", p1.name);
-    printf("Enter name of player two (White):");
+    printf("Enter name of Player 2 (White):");
     scanf("%s", p2.name);
 
     printBoard();
     printf("%s goes first\n", p1.name);
 
 
-    while(numOfTiles != SIZE*SIZE){
+    while(numOfTiles != SIZE*SIZE && (checkMoves(p1.color) || checkMoves(p2.color))){
 
         printf("%s's turn (%c)\n", p1.name, p1.color);
         printf("Your move:");

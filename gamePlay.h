@@ -2,6 +2,8 @@
 // Created by Bori Akinola on 03/05/2021.
 //
 
+#include <stdbool.h>
+
 #ifndef PROJECTASSIGNMENT2_GAMEPLAY_H
 #define PROJECTASSIGNMENT2_GAMEPLAY_H
 
@@ -12,3 +14,4 @@ char slot[2];
 
 
 void initialiseGame(void);
+bool checkMoves(char color);

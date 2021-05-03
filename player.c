@@ -28,7 +28,6 @@ bool checkSlot(char color, const char input[3]){
                 return true;
         }
     }
-
     return false;
 }
 
