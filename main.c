@@ -135,7 +135,6 @@ void playerMove(char color, const char slot[3]){
     int x;
 
     x = slot[0] - 'a';
-
     board[atoi(&slot[1])-1][x] = color;
 }
 
@@ -189,15 +188,15 @@ bool validMove(char color, int dRow, int dCol, int row, int col){
 
     // check if we're walking off the board
 
-    if((row + dRow < 0) || (row + dRow > SIZE-1))
+    if((row+dRow < 0) || (row+dRow > SIZE-1))
         return false;
-    if((col + dCol < 0) || (col + dCol > SIZE-1))
+    if((col+dCol < 0) || (col + dCol > SIZE-1))
         return false;
-    if(board[row + dRow][col + dCol] != opp)
+    if(board[row+dRow][col+dCol] != opp)
         return false;
-    if((row + dRow + dRow < 0) || (row + dRow + dRow > 7))
+    if((row+dRow+dRow < 0) || (row+dRow+dRow > 7))
         return false;
-    if((col + dCol + dCol < 0) || (col + dCol + dCol > 7))
+    if((col+dCol+dCol < 0) || (col+dCol+dCol > 7))
         return false;
 
     return lineCheck(color, dRow, dCol, row+dRow+dRow, col+dCol+dCol);
@@ -206,9 +205,9 @@ bool validMove(char color, int dRow, int dCol, int row, int col){
 bool lineCheck(char color, int dRow, int dCol, int row, int col){
     if(board[row][col] == color)
         return true;
-    if((row + dRow < 0) || (row + dRow > SIZE-1))
+    if((row+dRow < 0) || (row+dRow > SIZE-1))
         return false;
-    if((col + dCol < 0) || (col + dCol > SIZE-1))
+    if((col+dCol < 0) || (col+dCol > SIZE-1))
         return false;
 
     return lineCheck(color, dRow, dCol, row+dRow, col+dCol);
@@ -232,9 +231,9 @@ void flip(char color, const char input[3]){
 // Function to check the stuff and the other stuff
 
 bool lineFLip(char color, int dRow, int dCol, int row, int col){
-    if((row + dRow < 0) || (row + dRow > SIZE-1))
+    if((row+dRow < 0) || (row+dRow > SIZE-1))
         return false;
-    if((col + dCol < 0) || (col + dCol > SIZE-1))
+    if((col+dCol < 0) || (col+dCol > SIZE-1))
         return false;
 
     if(board[row+dRow][col+dCol] == ' ')
