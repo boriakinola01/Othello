@@ -20,9 +20,9 @@ int main(void){
     while(numOfTiles != SIZE*SIZE){
         if(checkMoves(p1.color))
             playPlayer(p1);
-        else if(checkMoves(p2.color))
+        if(checkMoves(p2.color))
             playPlayer(p2);
-        else
+        if(!checkMoves(p2.color) && !checkMoves(p1.color))
             break;
     }
 
