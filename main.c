@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include "board.h"
 #include "player.h"
 #include "gamePlay.h"
@@ -19,36 +18,17 @@ int main(void){
 
     while(numOfTiles != SIZE*SIZE && (checkMoves(p1.color) || checkMoves(p2.color))){
 
-        printf("%s's turn (%c)\n", p1.name, p1.color);
-        printf("Your move:");
-        scanf("%s", slot);
-
-        if(strcmp(slot,"p")!=0){
-
-            while(!checkSlot(p1.color, slot) || checkInput(slot)){
-                printf("Invalid input, enter a valid slot:");
-                scanf("%s", slot);
-            }
-            playerMove(p1.color, slot);
-            numOfTiles++;
-            updateScore();
-            printBoard();
-        }
-
-        printf("%s's turn (%c)\n", p2.name, p2.color);
-        printf("Your move:");
-        scanf("%s", slot);
-
-        if(strcmp(slot,"p")!=0){
-
-            while(!checkSlot(p2.color, slot) || checkInput(slot)){
-                printf("Invalid input, enter a valid slot:");
-                scanf("%s", slot);
-            }
-            playerMove(p2.color, slot);
-            numOfTiles++;
-            updateScore();
-            printBoard();
-        }
+        playPlayer(p1);
+        playPlayer(p2);
     }
+
+    printf("Game Over!\n");
+
+    if(p2.score > p1.score){
+        printf("%s wins!!!\n", p2.name);
+    } else {
+        printf("%s wins!!!\n", p1.name);
+    }
+
+    return 0;
 }

@@ -3,11 +3,15 @@
 //
 
 #include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+#include "player.h"
 
 #ifndef PROJECTASSIGNMENT2_GAMEPLAY_H
 #define PROJECTASSIGNMENT2_GAMEPLAY_H
 
-int numOfTiles = 0;
+int numOfTiles;
+
 char slot[2];
 
 #endif //PROJECTASSIGNMENT2_GAMEPLAY_H
@@ -15,3 +19,4 @@ char slot[2];
 
 void initialiseGame(void);
 bool checkMoves(char color);
+void playPlayer(player p);
