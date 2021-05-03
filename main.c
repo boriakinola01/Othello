@@ -28,14 +28,12 @@ void flip(char color, const char input[3]);
 int main(void){
 
     initialiseBoard(board);
+    updateScore();
 
     p1.color = 'B';
     p2.color = 'W';
-    p1.score = 0;
-    p2.score = 0;
 
-
-    char slot[3];
+    char slot[2];
     int numOfTiles = 4;
 
     printf("Enter name of player one (Black):");
@@ -66,7 +64,6 @@ int main(void){
             printBoard();
         }
 
-
         printf("%s's turn\n", p2.name);
         printf("Your move:");
         scanf("%s", slot);
@@ -82,12 +79,8 @@ int main(void){
             numOfTiles++;
             updateScore();
             printBoard();
-
         }
-
-
     }
-
 }
 
 void printBoard(){
