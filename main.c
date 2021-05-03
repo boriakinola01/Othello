@@ -1,3 +1,12 @@
+/*
+ * The game of Othello
+ * Author: Toluwabori Akinola
+ *         20720321
+ *         University College Dublin
+ *
+ */
+
+
 #include <stdio.h>
 #include <time.h>
 #include "board.h"
@@ -30,8 +39,10 @@ int main(void){
 
     if(p2.score > p1.score){
         printf("%s wins!!!\n", p2.name);
-    } else {
+    } else if(p1.score > p2.score){
         printf("%s wins!!!\n", p1.name);
+    } else{
+        printf("Game was a ti!!\n");
     }
 
     FILE *fp;

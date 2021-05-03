@@ -39,15 +39,11 @@ bool validMove(char color, int dRow, int dCol, int row, int col){
     else if(color == 'W')
         opp = 'B';
 
-    if((row+dRow < 0) || (row+dRow > SIZE-1))
-        return false;
-    if((col+dCol < 0) || (col+dCol > SIZE-1))
+    if((row+dRow < 0) || (row+dRow > SIZE-1) || (col+dCol < 0) || (col+dCol > SIZE-1))
         return false;
     if(board[row+dRow][col+dCol] != opp)
         return false;
-    if((row+dRow+dRow < 0) || (row+dRow+dRow > 7))
-        return false;
-    if((col+dCol+dCol < 0) || (col+dCol+dCol > 7))
+    if((row+dRow+dRow < 0) || (row+dRow+dRow > 7) || (col+dCol+dCol < 0) || (col+dCol+dCol > 7))
         return false;
 
     return lineCheck(color, dRow, dCol, row+dRow+dRow, col+dCol+dCol);
@@ -56,9 +52,7 @@ bool validMove(char color, int dRow, int dCol, int row, int col){
 bool lineCheck(char color, int dRow, int dCol, int row, int col){
     if(board[row][col] == color)
         return true;
-    if((row+dRow < 0) || (row+dRow > SIZE-1))
-        return false;
-    if((col+dCol < 0) || (col+dCol > SIZE-1))
+    if((row+dRow < 0) || (row+dRow > SIZE-1) || (col+dCol < 0) || (col+dCol > SIZE-1))
         return false;
 
     return lineCheck(color, dRow, dCol, row+dRow, col+dCol);

@@ -8,3 +8,8 @@ Game played on Mon May  3 19:46:59 2021
 
 Player 1: Bee 	Score: 4
 Player 2: Boo 	Score: 0
+
+Game played on Mon May  3 20:28:49 2021
+
+Player 1: bORI 	Score: 0
+Player 2: nADIA 	Score: 4
