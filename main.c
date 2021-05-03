@@ -16,7 +16,7 @@ char board[SIZE][SIZE];
 player p1, p2;
 
 void printBoard();
-void initialise(char arr[][SIZE]);
+void initialiseBoard(char arr[][SIZE]);
 void playerMove(char color, const char slot[3]);
 bool checkSlot(char color, const char input[3]);
 bool validMove(char color, int dRow, int dCol, int row, int col);
@@ -28,7 +28,7 @@ void flip(char color, const char input[3]);
 
 int main(void){
 
-    initialise(board);
+    initialiseBoard(board);
 
     p1.color = 'B';
     p2.color = 'W';
@@ -118,7 +118,7 @@ void printBoard(){
     printf("\n");
 }
 
-void initialise(char arr[][SIZE]){
+void initialiseBoard(char arr[][SIZE]){
     for(int i = 0; i<SIZE;i++){
         for(int j=0;j<SIZE;j++){
             arr[i][j] = ' ';
