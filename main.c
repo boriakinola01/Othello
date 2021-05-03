@@ -139,7 +139,7 @@ void playerMove(char color, const char slot[3]){
 }
 
 bool checkInput(const char input[3]){
-    if(input[0]<'a' || input[0]>'h')
+    if(input[0] < 'a' || input[0] > 'h')
         return true;
     if(input[1] < '1' || input[1] > '8')
         return true;
@@ -149,8 +149,8 @@ bool checkInput(const char input[3]){
 }
 
 void updateScore(void){
-    for(int row=0; row<SIZE;row++){
-        for(int col=0;col<SIZE;col++){
+    for(int row=0; row<SIZE; row++){
+        for(int col=0; col<SIZE; col++){
             if(board[row][col] == 'B')
                 p1.score++;
             if(board[row][col] == 'W')
@@ -190,7 +190,7 @@ bool validMove(char color, int dRow, int dCol, int row, int col){
 
     if((row+dRow < 0) || (row+dRow > SIZE-1))
         return false;
-    if((col+dCol < 0) || (col + dCol > SIZE-1))
+    if((col+dCol < 0) || (col+dCol > SIZE-1))
         return false;
     if(board[row+dRow][col+dCol] != opp)
         return false;
@@ -211,41 +211,4 @@ bool lineCheck(char color, int dRow, int dCol, int row, int col){
         return false;
 
     return lineCheck(color, dRow, dCol, row+dRow, col+dCol);
-}
-
-void flip(char color, const char input[3]){
-    int col = atoi(&input[1])-1;
-    int row = input[0] - 'a';
-
-    lineFLip(color, -1, -1, row, col);
-    lineFLip(color, -1, 0, row, col);
-    lineFLip(color, -1, 1, row, col);
-    lineFLip(color, 0, 1, row, col);
-    lineFLip(color, 1, -1, row, col);
-    lineFLip(color, 1, 0, row, col);
-    lineFLip(color, 1, 1, row, col);
-    lineFLip(color, 0, -1, row, col);
-}
-
-
-// Function to check the stuff and the other stuff
-
-bool lineFLip(char color, int dRow, int dCol, int row, int col){
-    if((row+dRow < 0) || (row+dRow > SIZE-1))
-        return false;
-    if((col+dCol < 0) || (col+dCol > SIZE-1))
-        return false;
-
-    if(board[row+dRow][col+dCol] == ' ')
-        return false;
-
-    if(board[row+dRow][col+dCol] == color)
-        return true;
-    else{
-        if(lineFLip(color, dRow, dCol, row+dRow, col+dCol)){
-            board[row+dRow][col+dCol] = color;
-            return true;
-        } else
-            return false;
-    }
 }
