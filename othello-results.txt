@@ -3,3 +3,8 @@ Game played on Mon May  3 19:38:56 2021
 
 Player 1: Bori 	Score: 33
 Player 2: Richard 	Score: 31
+
+Game played on Mon May  3 19:46:59 2021
+
+Player 1: Bee 	Score: 4
+Player 2: Boo 	Score: 0
