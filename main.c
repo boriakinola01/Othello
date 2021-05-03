@@ -17,13 +17,12 @@ player p1, p2;
 
 void printBoard();
 void initialiseBoard(char arr[][SIZE]);
-void playerMove(char color, const char slot[3]);
 bool checkSlot(char color, const char input[3]);
 bool validMove(char color, int dRow, int dCol, int row, int col);
 bool lineCheck(char color, int dRow, int dCol, int row, int col);
 bool checkInput(const char input[3]);
 void updateScore(void);
-void flip(char color, const char input[3]);
+void playerMove(char color, const char input[3]);
 
 int main(void){
 
@@ -58,7 +57,6 @@ int main(void){
                 scanf("%s", slot);
             }
             playerMove(p1.color, slot);
-            flip(p1.color, slot);
             numOfTiles++;
             updateScore();
             printBoard();
@@ -75,7 +73,6 @@ int main(void){
                 scanf("%s", slot);
             }
             playerMove(p2.color, slot);
-            flip(p2.color, slot);
             numOfTiles++;
             updateScore();
             printBoard();
@@ -123,12 +120,6 @@ void initialiseBoard(char arr[][SIZE]){
     arr[4][4] = 'W';
 }
 
-void playerMove(char color, const char slot[3]){
-    int x;
-
-    x = slot[0] - 'a';
-    board[atoi(&slot[1])-1][x] = color;
-}
 
 bool checkInput(const char input[3]){
     if(input[0] < 'a' || input[0] > 'h')
@@ -141,14 +132,17 @@ bool checkInput(const char input[3]){
 }
 
 void updateScore(void){
+    int x = 0, y = 0;
     for(int row=0; row<SIZE; row++){
         for(int col=0; col<SIZE; col++){
             if(board[row][col] == 'B')
-                p1.score++;
+                x++;
             if(board[row][col] == 'W')
-                p2.score++;
+                y++;
         }
     }
+    p1.score = x;
+    p2.score = y;
 }
 
 bool checkSlot(char color, const char input[3]){
@@ -205,24 +199,26 @@ bool lineCheck(char color, int dRow, int dCol, int row, int col){
     return lineCheck(color, dRow, dCol, row+dRow, col+dCol);
 }
 
-void flip(char color, const char input[3]){
-    char opp;
 
+void playerMove(char color, const char input[3]){
+    char opp;
     int dRow, dCol, x, y;
+
+    int col = atoi(&input[1])-1;
+    int row = input[0] - 'a';
+
+    board[row][col] = color;
 
     if(color == 'B')
         opp = 'W';
     else if(color == 'W')
         opp = 'B';
 
-    int col = atoi(&input[1])-1;
-    int row = input[0] - 'a';
-
-    for(dCol = -1; dCol<=1; dCol++){
-        for(dRow = -1; dRow<=1; dRow++){
+    for(dCol = -1; dCol <= 1; dCol++){
+        for(dRow = -1; dRow <= 1; dRow++){
 
             if((row+dRow < 0) || (row+dRow > SIZE-1) ||
-            (col+dCol < 0) || (col+dCol > SIZE-1))
+            (col+dCol < 0) || (col+dCol > SIZE-1) || (dRow == 0 && dCol ==0))
                 continue;
 
             if(board[row+dRow][col+dCol] == opp){
@@ -248,5 +244,4 @@ void flip(char color, const char input[3]){
             }
         }
     }
-
 }
