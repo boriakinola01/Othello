@@ -1,5 +1,5 @@
 //
-// Created by Bori Akinola on 03/05/2021.
+// Created by Toluwabori Akinola on 03/05/2021.
 //
 
 #include "gamePlay.h"
@@ -40,7 +40,7 @@ void playPlayer(player p){
 
     if(strcmp(slot,"p")!=0){
 
-        while(!checkSlot(p.color, slot) || checkInput(slot)){
+        while(checkSlot(p.color, slot) || checkInput(slot)){
             printf("Invalid input, enter a valid slot:");
             scanf("%s", slot);
         }

@@ -1,5 +1,5 @@
 //
-// Created by Bori Akinola on 03/05/2021.
+// Created by Toluwabori Akinola on 03/05/2021.
 //
 
 #include <stdbool.h>
@@ -10,13 +10,17 @@
 #ifndef PROJECTASSIGNMENT2_GAMEPLAY_H
 #define PROJECTASSIGNMENT2_GAMEPLAY_H
 
+// variable to keep track of the number of tiles on the board
 int numOfTiles;
 
+// global variable to hold the input of a player as game progresses
 char slot[2];
 
 #endif //PROJECTASSIGNMENT2_GAMEPLAY_H
 
-
+/*
+ * Functions declaration
+ */
 void initialiseGame(void);
 bool checkMoves(char color);
 void playPlayer(player p);
