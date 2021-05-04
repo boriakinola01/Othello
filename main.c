@@ -3,7 +3,7 @@
  * Author: Toluwabori Akinola
  *         20720321
  *         University College Dublin
- *
+ *         Finished on: 04/05/2021
  */
 
 
@@ -16,27 +16,34 @@
 
 int main(void){
 
-    initialiseGame();
+    initialiseGame(); // initialise the game
+
+    // request the names of each player
     printf("Enter name of Player 1 (Black):");
     scanf("%s", p1.name);
     printf("Enter name of Player 2 (White):");
     scanf("%s", p2.name);
 
+    // print the board at the start
     printBoard();
-    printf("%s goes first\n", p1.name);
+    printf("%s goes first\n", p1.name); // player one goes first
 
-
+    // play the game until the board is filled up
     while(numOfTiles != SIZE*SIZE){
+        // check if player one has valid moves to play
         if(checkMoves(p1.color))
             playPlayer(p1);
+        // check if player two has valid moves to play
         if(checkMoves(p2.color))
             playPlayer(p2);
+        // if neither have valid moves to play, break out of loop. Game ends
         if(!checkMoves(p2.color) && !checkMoves(p1.color))
             break;
     }
 
     printf("Game Over!\n");
 
+    // declare the winner
     if(p2.score > p1.score){
         printf("%s wins!!!\n", p2.name);
     } else if(p1.score > p2.score){
@@ -45,6 +52,7 @@ int main(void){
         printf("Game was a ti!!\n");
     }
 
+    // write the game details to a file on the disk
     FILE *fp;
     time_t t;
     time(&t);
