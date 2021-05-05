@@ -13,3 +13,8 @@ Game played on Mon May  3 20:28:49 2021
 
 Player 1: bORI 	Score: 0
 Player 2: nADIA 	Score: 4
+
+Game played on Wed May  5 12:17:26 2021
+
+Player 1: Emman 	Score: 13
+Player 2: Bori 	Score: 51
