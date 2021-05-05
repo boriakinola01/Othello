@@ -30,7 +30,7 @@ bool checkInput(const char input[3]){
 /* Function to check if a slot entered by the user is a valid move
  * to be made by that player depending on their colour*/
 
-bool checkSlot(char color, const char input[3]){
+bool checkMove(char color, const char input[3]){
     // get the row and column entered by the user
     int row = atoi(&input[1])-1;
     int col = input[0] - 'a';

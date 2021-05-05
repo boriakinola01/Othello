@@ -31,13 +31,13 @@ int main(void){
     // play the game until the board is filled up
     while(numOfTiles != SIZE*SIZE){
         // check if player one has valid moves to play
-        if(checkMoves(p1.color))
+        if(movesAvailable(p1.color))
             playPlayer(p1);
         // check if player two has valid moves to play
-        if(checkMoves(p2.color))
+        if(movesAvailable(p2.color))
             playPlayer(p2);
         // if neither have valid moves to play, break out of loop. Game ends
-        if(!checkMoves(p2.color) && !checkMoves(p1.color))
+        if(!movesAvailable(p1.color) && !movesAvailable(p2.color))
             break;
     }
 

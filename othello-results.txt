@@ -18,3 +18,8 @@ Game played on Wed May  5 12:17:26 2021
 
 Player 1: Emman 	Score: 13
 Player 2: Bori 	Score: 51
+
+Game played on Wed May  5 22:17:46 2021
+
+Player 1: Bee 	Score: 6
+Player 2: Innih 	Score: 0

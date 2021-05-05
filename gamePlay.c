@@ -31,7 +31,7 @@ void initialiseGame(void){
  * This will help determine the end of the game if neither players have any valid
  * moves to play
  */
-bool checkMoves(char color){
+bool movesAvailable(char color){
     for(int row = 0; row<SIZE; row++){
         for(int col = 0; col<SIZE; col++){
             if(board[row][col] == ' '){
@@ -62,7 +62,7 @@ void playPlayer(player p){
     // check i user chooses to pass their turn
     if(strcmp(slot,"p")!=0){
         // check if the string entered is of a valid format and/or the move is valid
-        while(!checkSlot(p.color, slot) || !checkInput(slot)){
+        while(!checkMove(p.color, slot) || !checkInput(slot)){
             printf("Invalid input, enter a valid slot:");
             scanf("%s", slot);
         }

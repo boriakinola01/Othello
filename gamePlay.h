@@ -22,5 +22,5 @@ char slot[2];
  * Functions declaration
  */
 void initialiseGame(void);
-bool checkMoves(char color);
+bool movesAvailable(char color);
 void playPlayer(player p);

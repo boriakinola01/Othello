@@ -12,7 +12,7 @@
 typedef struct player{
 
     int score; // a players score
-    char name[10]; // a players name
+    char name[30]; // a players name
     char color; // a players color
 } player;
 
@@ -24,7 +24,7 @@ player p1, p2;
 /*
  * Functions declaration
  */
-bool checkSlot(char color, const char input[3]);
+bool checkMove(char color, const char input[3]);
 bool validMove(char color, int dRow, int dCol, int row, int col);
 bool lineCheck(char color, int dRow, int dCol, int row, int col);
 bool checkInput(const char input[3]);
