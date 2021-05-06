@@ -35,9 +35,10 @@ IMPLEMENTATION OF THE GAME LOGIC:
     --> If moves are available for that player, the player enters a position on the board in the format of
         "ld" with 'l' being a letter from a-h representing the column and 'd' being a digit from 1-8
         representing the row. When a player enters a move, the input is checked to see if it's of the right
-        format with the checkInput function and is also simultaneously checked to see if it's a valid move
-        to play. This is done with the checkMove function. A third check which serves as guard for the while
-        loop, checks if the user entered a 'p' to pass their turn.
+        format with the checkInput function; checked to see if the board already contains a tile with the
+        isNotEmpty function; checked to see if it's a valid move to play. This is done with the checkMove
+        function. A third check which serves as guard for the while loop, checks if the user entered a 'p'
+        to pass their turn.
 
         THE checkMove Function (declared in player.c/.h):
         This is the function that checks if a move entered by a user is valid or not. It does this by using

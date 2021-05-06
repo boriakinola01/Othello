@@ -24,8 +24,12 @@ player p1, p2;
 /*
  * Functions declaration
  */
-bool checkMove(char color, const char input[3]);
+
 bool validMove(char color, int dRow, int dCol, int row, int col);
 bool lineCheck(char color, int dRow, int dCol, int row, int col);
-bool checkInput(const char input[3]);
-void playerMove(char color, const char input[3]);
+
+bool checkMove(char color, const char input[]);
+void playerMove(char color, const char input[]);
+
+bool checkInput(const char input[]);
+bool isNotEmpty(const char input[]);

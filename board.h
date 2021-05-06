@@ -20,6 +20,9 @@ char board[SIZE][SIZE];
 /*
  * Functions declaration
  */
-void printBoard();
+
 void initialiseBoard(char arr[][SIZE]);
+
 void updateScore(void);
+
+void printBoard();

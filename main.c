@@ -3,7 +3,6 @@
  * Author: Toluwabori Akinola
  *         20720321
  *         University College Dublin
- *         Finished on: 04/05/2021
  */
 
 

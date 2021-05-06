@@ -61,8 +61,9 @@ void playPlayer(player p){
 
     // check if user chooses to pass their turn
     if(strcmp(slot,"p")!=0){
-        // check if the string entered is of a valid format and/or the move is valid
-        while(!checkMove(p.color, slot) || !checkInput(slot)){
+        // check if the string entered is of a valid format and/or the move is valid and/or
+        // teh slot on the board is empty
+        while(isNotEmpty(slot) || !checkMove(p.color, slot) || !checkInput(slot)){
             printf("Invalid input, enter a valid slot:");
             scanf("%s", slot);
         }

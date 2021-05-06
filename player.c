@@ -11,7 +11,7 @@
 /* Function to check the user input and makes sure it is valid
  * and within the range of the board*/
 
-bool checkInput(const char input[3]){
+bool checkInput(const char input[]){
     // check if the letter part is within 'a' and 'h'
     if(input[0] < 'a' || input[0] > 'h')
         return false;
@@ -26,9 +26,23 @@ bool checkInput(const char input[3]){
     return true;
 } // end of check input function
 
+/*
+ * Function to check if there slot the player is playing in is
+ * empty or not
+ */
+bool isNotEmpty(const char input[]){
+    if(board[atoi(&input[1])-1][input[0]-'a'] == 'B')
+        return true;
+    if(board[atoi(&input[1])-1][input[0]-'a'] == 'W')
+        return true;
+
+    return false;
+}
+
 
 /* Function to check if a slot entered by the user is a valid move
- * to be made by that player depending on their colour*/
+ * to be made by that player depending on their colour
+ */
 
 bool checkMove(char color, const char input[3]){
     // get the row and column entered by the user
@@ -93,7 +107,7 @@ bool lineCheck(char color, int dRow, int dCol, int row, int col){
 
 /* Function to implement a player move*/
 
-void playerMove(char color, const char input[3]){
+void playerMove(char color, const char input[]){
     char opp;
     int dRow, dCol, x, y;
 

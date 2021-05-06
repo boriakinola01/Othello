@@ -14,13 +14,16 @@
 int numOfTiles;
 
 // global variable to hold the input of a player as game progresses
-char slot[2];
+char slot[3];
 
 #endif //PROJECTASSIGNMENT2_GAMEPLAY_H
 
 /*
  * Functions declaration
  */
-void initialiseGame(void);
+
 bool movesAvailable(char color);
+
+void initialiseGame(void);
+
 void playPlayer(player p);
