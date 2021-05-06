@@ -13,7 +13,7 @@ typedef struct player{
 
     int score; // a players score
     char name[30]; // a players name
-    char color; // a players color
+    char color; // a players colour
 } player;
 
 // game is only played with two players so declare each player

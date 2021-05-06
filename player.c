@@ -94,13 +94,13 @@ bool validMove(char color, int dRow, int dCol, int row, int col){
 /* Function to find a corresponding colour along the path of search*/
 
 bool lineCheck(char color, int dRow, int dCol, int row, int col){
-    // if in the new position, the colour is found, return true
+    // if in the new position, the same colour tile is found, return true
     if(board[row][col] == color)
         return true;
     // if out of bounds, return false
     if((row+dRow < 0) || (row+dRow > SIZE-1) || (col+dCol < 0) || (col+dCol > SIZE-1))
         return false;
-    // repeat until out of bounds or colour is matched
+    // repeat until out of bounds or colour tile is matched
     return lineCheck(color, dRow, dCol, row+dRow, col+dCol);
 } // end of lineCheck function
 
@@ -115,7 +115,7 @@ void playerMove(char color, const char input[]){
     int row = atoi(&input[1])-1;
     int col = input[0] - 'a';
 
-    board[row][col] = color; // set the board value to the color
+    board[row][col] = color; // set the board value to the colour
 
     if(color == 'B')
         opp = 'W';
@@ -153,7 +153,7 @@ void playerMove(char color, const char input[]){
                     if(board[x][y] == color){
                         // as long as previous tile along the line is of opposite colour
                         while(board[x-=dRow][y-=dCol] == opp)
-                            //set tile to the color
+                            //set tile to the colour
                             board[x][y] = color;
                         break;
                     }

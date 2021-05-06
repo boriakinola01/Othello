@@ -32,7 +32,7 @@ void printBoard(){
     printf("\n    ");
     puts(" a   b   c   d   e   f   g   h");
     printf("\n");
-}
+} // end of print board function
 
 
 /* Function to initialise the board at the start of the game*/
@@ -65,8 +65,8 @@ void updateScore(void){
                 y++;
         }
     }
-    // set player 1 score to the number of Black
+    // set player 1 score to the number of Black tiles
     p1.score = x;
-    // set player 2 score to the number of White
+    // set player 2 score to the number of White tiles
     p2.score = y;
-} // emd of update score function
+} // end of update score function
