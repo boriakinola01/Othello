@@ -59,7 +59,7 @@ void playPlayer(player p){
     printf("Your move:");
     scanf("%s", slot);
 
-    // check i user chooses to pass their turn
+    // check if user chooses to pass their turn
     if(strcmp(slot,"p")!=0){
         // check if the string entered is of a valid format and/or the move is valid
         while(!checkMove(p.color, slot) || !checkInput(slot)){
