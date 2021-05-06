@@ -62,7 +62,7 @@ bool validMove(char color, int dRow, int dCol, int row, int col){
     if((row+dRow < 0) || (row+dRow > SIZE-1) || (col+dCol < 0) || (col+dCol > SIZE-1))
         return false;
 
-    // if search reaches the opposite colour, return false
+    // if search reaches the same colour, return false
     if(board[row+dRow][col+dCol] != opp)
         return false;
 

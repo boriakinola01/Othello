@@ -1,0 +1,98 @@
+Othello Code Explanation
+    By Toluwabori Akinola
+
+IMPLEMENTATION OF THE PLAYERS:
+    I decided to use a struct to represent each player. The struct holds the player name, the player
+    score and the player colour. Since it's a 2 player game, I just need two structs. These are declared
+    in the player.h file.
+
+IMPLEMENTATION OF THE TILES:
+    The tiles are just single characters. Either 'B', 'w' or ' '.
+
+IMPLEMENTATION OF THE BOARD:
+    Implementing the board was pretty straightforward. I decide to use just one 8-row, 8-column 2d Array
+    of characters for the entire board. This array is declared in the board.h file as a global variable
+    and is accessed across almost all the functions. The board is initialised first to contain nothing.
+    But at the start of the game, the middle tiles are initialised as follows:
+
+                           |   |   |
+                        --- --- --- ---
+                           | W | B |
+                        --- --- --- ---
+                           | B | W |
+                        --- --- --- ---
+                           |   |   |
+
+IMPLEMENTATION OF THE GAME LOGIC:
+    The game starts off with the black player. Each player has a limited validity of moves to play. The
+    valid moves depend on the tiles on the board and where a same colour tile is for that player and if there
+    would be at least one opposing tile colour in between the same colour tile to be placed and one already
+    on the board.
+
+    --> Before a move is made by a player, there has to be a valid move to make for that player. If
+        there isn't, the player forfeits their turn. This check is implemented in the movesAvailable
+        function (declared in gamePlay.c/.h)
+    --> If moves are available for that player, the player enters a position on the board in the format of
+        "ld" with 'l' being a letter from a-h representing the column and 'd' being a digit from 1-8
+        representing the row. When a player enters a move, the input is checked to see if it's of the right
+        format with the checkInput function and is also simultaneously checked to see if it's a valid move
+        to play. This is done with the checkMove function. A third check which serves as guard for the while
+        loop, checks if the user entered a 'p' to pass their turn.
+
+        THE checkMove Function (declared in player.c/.h):
+        This is the function that checks if a move entered by a user is valid or not. It does this by using
+        a helper function (validMove) which also uses its own helper function (lineCheck).
+        The checkMove function specifies the directions for the validMove function to check. Using the nested
+        for loops with i and j both going from the lower limit to the upper limit in the interval [-1, 1].
+        These specify the 8 cardinal positions for the loops to check:
+                              i, j
+                        nn:  -1, 0
+                        ne:  -1, 1
+                        ee:   0, 1
+                        se:   1, 1
+                        ss:   1, 0
+                        sw:   1, -1
+                        ww:   0, -1
+                        nw:  -1, -1
+        These coordinates are passed as dRow(i) and dCol(j) for the validMove function. For a move to be
+        valid, there has to be at least one opposite colour tile between the tile to be placed another tile
+        of the same colour.
+        This validMove function checks the immediate vertices and sides of the tile to be placed for the same
+        colour tile (line 66). If it is the same colour, return false meaning an invalid move. If it's not,
+        the search moves along. This is where the lineCheck function comes in (line 76).
+        This is a recursive function that checks along the line in whatever direction was passed into the
+        validMove function. It keeps checking until either it's at the end of the board (line 87), or it hits
+        a same colour tile to which it returns true (line 84).
+        The true value is then passed from the lineCheck function to the validMove function then ultimately
+        to the checkMove function. This means a valid move can be made by that player.
+        Note: For a valid move to be made, the validMove function needs to return true for just 1 out of the 8
+        locations checked.
+
+
+    --> If the move is valid for the user, the move is implemented with the playerMove function. This
+        places the users tile at the location specified and overturns any opponents tile it needs to.
+
+        THE playerMove function (declared in player.c/.h):
+        The first part of this function just places the players tile on the board. The second part is what
+        overturns the opponents tile. It does so by searching in the 8 directions previously stated for the
+        same colour tile (lines 112/113). But on its path to finding it, there needs to be at least one
+        opposite colour tile (line 121). When it finds the same colour tile (line 139), it goes back in the
+        opposite direction (line 141), turning every opposite colour tile to the same colour tile (line 143).
+        It stops when it reaches a tile of the same colour.
+
+    --> After the move is made, the number of tiles on the board is incremented, the score is updated and the
+        board is printed. The game goes along until the board is full or neither of the players have a valid
+        move to make.
+
+IMPLEMENTATION OF GAMEPLAY:
+    I implemented the gameplay of each player in the function called playPlayer (declared in gamePlay.c/.h).
+    The function:
+    --> gets the players move,
+    --> checks the validity of the move,
+    --> implements the number of tiles,
+    --> updates the score and
+    --> prints the board.
+
+
+At the end of each round of the game, the scores of the players and the time and date the game was played
+is added to a file on disc.
