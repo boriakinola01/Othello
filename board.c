@@ -52,7 +52,7 @@ void initialiseBoard(char arr[][SIZE]){
 } // end of initialise board function
 
 /* Function to update the score of both players as the game progresses*/
-void updateScore(void){
+void updateScore(){
     // variables to hold the score each time it's run. Set to 0
     int x = 0, y = 0;
     for(int row=0; row<SIZE; row++){

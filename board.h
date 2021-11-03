@@ -23,6 +23,6 @@ char board[SIZE][SIZE];
 
 void initialiseBoard(char arr[][SIZE]);
 
-void updateScore(void);
+void updateScore();
 
 void printBoard();

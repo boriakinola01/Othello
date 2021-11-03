@@ -19,8 +19,8 @@ bool checkInput(const char input[]){
     if(input[1] < '1' || input[1] > '8')
         return false;
     // check if where the user intends to play is empty or not
-    if(board[atoi(&input[1])-1][input[0]-'a'] != ' ')
-        return false;
+//    if(board[atoi(&input[1])-1][input[0]-'a'] != ' ')
+//        return false;
 
     // if no issue, return true
     return true;
